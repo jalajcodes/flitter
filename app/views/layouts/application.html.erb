@@ -3,37 +3,11 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <%= csrf_meta_tags %> 
-    <%= csp_meta_tag %> 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track':
-    'reload' %>
+    <%= render 'layouts/meta_tags' %>
   </head>
 
   <body>
-    <nav class="bg-white shadow absolute w-full">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col items-center sm:flex-row justify-between lg:h-16">
-          <div class="flex mt-4 sm:mt-0">
-            <div class="flex-shrink-0 flex items-center">
-              <h1 class="text-indigo-600 font-bold text-4xl">Flitter</h1>
-              <!-- <img class="block sm:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" /> -->
-              <!-- <img class="hidden sm:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow" /> -->
-            </div>
-          </div>
-          <div class="sm:ml-6 flex items-center">
-            <div class="h-16 flex">
-              <div class="sm:ml-6 flex sm:space-x-8">
-                <%= link_to "Home", "#", class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %>
-                <%= link_to "Help", "#", class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %>
-                <%= link_to "Log In", "#",  class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <%= render 'layouts/nav' %>
     <%= yield %>
   </body>
 </html>
