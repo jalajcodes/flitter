@@ -3,11 +3,13 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <%= render 'layouts/meta_tags' %>
+    <%= render "layouts/meta_tags" %>
   </head>
 
   <body class="font-ubuntu">
-    <%= render 'layouts/nav' %>
+    <%= render "layouts/nav" %>
+    <%= render "layouts/flash" %>
     <%= yield %>
+    <%= render "layouts/debug_info" %>
   </body>
 </html>

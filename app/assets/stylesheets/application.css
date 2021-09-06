@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+input[type="hidden"] {
+  display: none;
+}
+
+.field_with_errors input {
+  color: red;
+  border: 2px solid red;
+}
