@@ -1,29 +1,12 @@
-<%= provide(:title, "Sign Up")%>
+<%= provide(:title, "Log In")%>
 <div class="min-h-screen pt-16 bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create a new account</h2>
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
   </div>
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white pt-2 pb-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <%= render "layouts/error_info" %>
-      <%= form_with model: @user, local: true, class: "space-y-6" do |f| %>
-      <div>
-        <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <div class="mt-1">
-        <%= f.text_field :name, class: "appearance-none
-                block
-                w-full
-                px-3
-                py-2
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                placeholder-gray-400
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                sm:text-sm" %>
-        </div>
-      </div>
+      <%= form_with url: login_path, scope: :session, local: true, class: "space-y-6" do |f| %>
         <div>
           <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
@@ -66,40 +49,19 @@
           </div>
         </div>
        
-        <div>
-          <%= f.label :password_confirmation, "Confirmation", class: "block text-sm font-medium text-gray-700"%>
-          <div class="mt-1">
-            <%= f.password_field :password_confirmation,
-              class: "
-                appearance-none
-                block
-                w-full
-                px-3
-                py-2
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                placeholder-gray-400
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                sm:text-sm
-              "
-            %>
-          </div>
-        </div>
-
         <div class="flex items-center justify-between">
           <div class="flex items-center">
             <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
             <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
           </div>
 
-          <%# <div class="text-sm">
+          <div class="text-sm">
             <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
-          </div> %>
+          </div>
         </div>
 
         <div>
-          <%= f.submit "Create my account", 
+          <%= f.submit "Log In", 
             class: "
               w-full
               flex
@@ -122,8 +84,8 @@
 
         <div class="flex items-center justify-center">
           <p>
-            Already have an account? 
-            <%= link_to "Login now!", login_path, class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+            New User?
+            <%= link_to "Sign up now!", signup_path, class: "font-medium text-indigo-600 hover:text-indigo-500" %>
           </p>
         </div>
       <% end %>

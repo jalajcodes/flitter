@@ -4,8 +4,6 @@
       <div class="flex mt-4 sm:mt-0">
         <div class="flex-shrink-0 flex items-center">
           <%= link_to "Flitter", root_path, id: "logo", class: "text-indigo-600 font-bold text-4xl" %>
-          <!-- <img class="block sm:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" /> -->
-          <!-- <img class="hidden sm:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow" /> -->
         </div>
       </div>
       <div class="sm:ml-6 flex items-center">
@@ -13,7 +11,15 @@
           <div class="sm:ml-6 flex sm:space-x-8">
             <%= link_to "Home", root_path, class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
             <%= link_to "Help", help_path, class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
-            <%= link_to "Log In", "#", class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %>
+
+            <% if logged_in? %>
+              <%= link_to "Users", "#", class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
+              <%= link_to "Profile", current_user, class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
+              <%= link_to "Settings", "#", class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
+              <%= link_to "Log Out", logout_path, method: :delete, class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %> 
+            <% else %>
+              <%= link_to "Log In", login_path, class: "hover:text-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium" %>
+            <% end %>
           </div>
         </div>
       </div>

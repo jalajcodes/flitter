@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Flitter!"
+      log_in @user
+      flash[:success] = "Your account has been created"
       redirect_to @user
-      # do something
     else
       render "new"
     end
