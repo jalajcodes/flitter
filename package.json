@@ -14,8 +14,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@prettier/plugin-ruby": "^1.6.1",
     "autoprefixer": "^9",
     "postcss": "^7",
+    "prettier": "2.2",
     "webpack-dev-server": "^4.1.0"
   }
 }

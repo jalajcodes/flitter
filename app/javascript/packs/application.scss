@@ -1,0 +1,21 @@
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+
+/*! purgecss start ignore */
+.pagination {
+  @apply flex justify-center;
+  @apply my-2 py-2;
+}
+
+.pagination * {
+  @apply px-3 py-2 mx-2;
+  @apply text-gray-700 no-underline bg-white rounded-lg;
+}
+
+.pagination a:hover,
+.pagination .current {
+  @apply font-semibold text-gray-200 bg-indigo-600;
+}
+/*! purgecss end ignore */
+
+@import "tailwindcss/components";

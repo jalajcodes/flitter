@@ -1,0 +1,28 @@
+<%= provide(:title, "All Users")%>
+<div class="mt-16">
+  <h1 class="text-2xl px-4 py-5">All Users</h1>
+  <ul role="list" class="divide-y divide-gray-200">
+    <%@users.each do |user|%>
+      <li class="py-4 px-4 flex">
+        <%= gravatar_for user %>
+        <div class="ml-3 w-full">
+          <div class="w-1/3 flex justify-between items-center">
+            <p>
+              <%= link_to user.name, user, class: "text-sm font-medium text-gray-900" %>
+            </p>
+            <p>
+              <% if current_user.admin? && !current_user?(user) %>
+                <%= link_to "Delete", user, method: :delete,
+                                  data: { confirm: "You sure?" }, class: "px-2 py-1 rounded text-white bg-indigo-600" %>
+              <% end %>
+            </p>
+          </div>
+          <p class="text-sm text-gray-500">
+            <%= user.email %>
+          </p>
+        </div>
+      </li>
+    <%end%>
+  </ul>
+  <%= will_paginate %>
+</div>

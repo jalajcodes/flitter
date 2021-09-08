@@ -1,14 +1,15 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user&.authenticate(params[:session][:password])
-      log_in @user
+      forwarding_url = session[:forwarding_url]
+      reset_session
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      log_in @user
       flash[:success] = "You're now logged in"
-      redirect_to @user
+      redirect_to forwarding_url || @user
     else
       flash.now[:error] = 'Invalid email/password combination.'
       render 'new'
