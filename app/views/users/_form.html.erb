@@ -1,9 +1,9 @@
-<%= render "layouts/error_info" %>
-      <%= form_with model: @user, local: true, class: "space-y-6" do |f| %>
-      <div>
-        <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <div class="mt-1">
-        <%= f.text_field :name, class: "appearance-none
+<%= form_with model: @user, local: true, class: "space-y-6" do |f| %>
+  <%= render "layouts/error_info", object: f.object %>
+  <div>
+    <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.text_field :name, class: "appearance-none
                 block
                 w-full
                 px-3
@@ -14,12 +14,12 @@
                 placeholder-gray-400
                 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
                 sm:text-sm" %>
-        </div>
-      </div>
-        <div>
-          <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
-          <div class="mt-1">
-            <%= f.email_field :email,
+    </div>
+  </div>
+  <div>
+    <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.email_field :email,
               class: "
                 appearance-none
                 block
@@ -34,13 +34,12 @@
                 sm:text-sm
               "
             %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :password, class: "block text-sm font-medium text-gray-700"%>
-          <div class="mt-1">
-            <%= f.password_field :password,
+    </div>
+  </div>
+  <div>
+    <%= f.label :password, class: "block text-sm font-medium text-gray-700"%>
+    <div class="mt-1">
+      <%= f.password_field :password,
               class: "
                 appearance-none
                 block
@@ -55,13 +54,12 @@
                 sm:text-sm
               "
             %>
-          </div>
-        </div>
-       
-        <div>
-          <%= f.label :password_confirmation, "Confirmation", class: "block text-sm font-medium text-gray-700"%>
-          <div class="mt-1">
-            <%= f.password_field :password_confirmation,
+    </div>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, "Confirmation", class: "block text-sm font-medium text-gray-700"%>
+    <div class="mt-1">
+      <%= f.password_field :password_confirmation,
               class: "
                 appearance-none
                 block
@@ -76,11 +74,10 @@
                 sm:text-sm
               "
             %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.submit "Save Changes", 
+    </div>
+  </div>
+  <div>
+    <%= f.submit "Save Changes", 
             class: "
               w-full
               flex
@@ -99,5 +96,5 @@
             "
           
           %>
-        </div>
-      <% end %>
+  </div>
+<% end %>

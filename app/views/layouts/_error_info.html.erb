@@ -1,10 +1,10 @@
-<% if @user.errors.any? %>
-<div class="error-list border-2 w-full mt-5 bg-red-300 border-red-500 text-white rounded-md shadow-sm px-3 py-2">
-  <p class="text-lg font-bold">The form contains <%= pluralize(@user.errors.count, "error") %>:</p>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li>&rArr; <%= msg %> </li>
-    <% end %>
-  </ul>
-</div>
+<% if object.errors.any? %>
+  <div class="error-list border-2 mt-5 bg-red-300 border-red-500 text-white rounded-md shadow-sm px-3 py-2">
+    <p class="text-lg font-bold">The form contains <%= pluralize(object.errors.count, "error") %>:</p>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li>&rArr; <%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

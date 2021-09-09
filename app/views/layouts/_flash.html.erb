@@ -1,5 +1,5 @@
-<div aria-live="assertive" class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
-  <div class="w-full flex flex-col items-center space-y-4 sm:items-center">
+<div aria-live="assertive" class="fixed z-50 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+  <div class="w-full z-50 flex flex-col items-center space-y-4 sm:items-center">
     <!--
       Notification panel, dynamically insert this into the live region when it needs to be displayed
 
@@ -11,8 +11,8 @@
         To: "opacity-0"
     -->
     <% flash.each do |message_type, message|%>
-      <div class="flash-message animate-fade-in-down transform ease-out duration-300 transition max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
-        <div class="p-4">
+      <div class="flash-message z-50 animate-fade-in-down transform ease-out duration-300 transition max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div class="p-4 z-50">
           <div class="flex items-start">
             <div class="flex-shrink-0">
               <% if message_type === 'error' %>

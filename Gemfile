@@ -13,6 +13,7 @@ gem 'solargraph'
 gem 'prettier'
 gem 'faker'
 gem 'will_paginate'
+gem 'active_storage_validations'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -64,6 +65,7 @@ group :test do
 end
 
 group :production do
+  gem 'cloudinary'
   gem 'pg', '1.2.3'
 end
 
