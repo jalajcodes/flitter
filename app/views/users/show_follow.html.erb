@@ -1,0 +1,42 @@
+<% provide :title, @title %>
+<div class="flex flex-col md:flex-row container mt-32 md:mt-20 container mx-auto">
+  <div class="flex flex-col md:w-1/4 mr-5 my-5">
+    <div class="flex flex-col text-center bg-white rounded divide-y divide-gray-200 shadow">
+      <div class=" flex flex-col p-8">
+        <%= gravatar_for(@user, "gravatar w-32 h-32 flex-shrink-0 mx-auto rounded-full") %>
+        <h1 class="mt-6 text-gray-900 text-sm font-medium"><a href="<%= user_path(@user) %>"><%= @user.name %></a></h1>
+        <dl class="mt-1 flex-grow flex flex-col justify-between">
+          <dd class="text-gray-500 text-sm"><%= pluralize(@user.microposts.count, "fleet") %></dd>
+        </dl>
+      </div>
+      <div>
+        <div class="-mt-px stats flex divide-x divide-gray-200">
+          <div class="w-0 flex-1 flex">
+            <a href="<%= following_user_path(@user) %>" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+              <span class="ml-3 following"><%= @user.following.count %> Following</span>
+            </a>
+          </div>
+          <div class="-ml-px w-0 flex-1 flex">
+            <a href="<%= followers_user_path(@user) %>" class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
+              <span class="ml-3 followers"><%= @user.followers.count%> Followers</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="user-avatars flex flex-wrap gap-3 w-full py-4 justify-center text-center bg-white rounded mt-5 shadow user_avatars">
+      <% @users.each do |user| %>
+        <%= link_to gravatar_for(user, 'w-12 h-12 rounded-md'), user, title: user.name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="p-5 my-5 shadow rounded flex-1 bg-white">
+    <h3 class="text-3xl font-bold py-5"><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

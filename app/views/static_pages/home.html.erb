@@ -4,27 +4,21 @@
       <div class="flex flex-col text-center bg-white rounded divide-y divide-gray-200 shadow">
         <div class=" flex flex-col p-8">
           <%= gravatar_for(current_user, "gravatar w-32 h-32 flex-shrink-0 mx-auto rounded-full") %>
-          <h1 class="mt-6 text-gray-900 text-sm font-medium"><%= current_user.name %></h1>
+          <h1 class="mt-6 text-gray-900 text-sm font-medium"><a href="<%= user_path(current_user) %>"><%= current_user.name %></a></h1>
           <dl class="mt-1 flex-grow flex flex-col justify-between">
             <dd class="text-gray-500 text-sm"><%= pluralize(current_user.microposts.count, "fleet") %></dd>
           </dl>
         </div>
         <div>
-          <div class="-mt-px flex divide-x divide-gray-200">
+          <div class="-mt-px stats flex divide-x divide-gray-200">
             <div class="w-0 flex-1 flex">
-              <a href="#" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span class="ml-3">Profile</span>
+              <a href="<%= following_user_path(current_user) %>" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                <span class="ml-3 following"><%= current_user.following.count %> Following</span>
               </a>
             </div>
             <div class="-ml-px w-0 flex-1 flex">
-              <a href="tel:+1-202-555-0170" class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
-                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                <span class="ml-3">Follow</span>
+              <a href="<%= followers_user_path(current_user) %>" class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
+                <span class="ml-3 followers"><%= current_user.followers.count%> Followers</span>
               </a>
             </div>
           </div>
@@ -32,7 +26,7 @@
       </div>
       <%= form_with(model: @micropost, local: true, class: "flex flex-col text-center bg-white rounded mt-5 shadow") do |f| %>
         <%= render 'layouts/error_info', object: f.object %>
-        <%= f.text_area :content, placeholder: "Compose new fleet...", class: "border-gray-400 m-5 rounded bg-transparent p-2", cols: "10", rows: "10" %>
+        <%= f.text_area :content, placeholder: "Compose new fleet...", class: "border-gray-400 border-2 m-5 rounded bg-transparent p-2", cols: "10", rows: "5" %>
         <div class="flex items-center justify-center p-2 mx-5 mb-5 text-blue rounded-lg shadow">
           <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
         </div>
